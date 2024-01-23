@@ -3,14 +3,18 @@ import { WeatherForecast } from './js/compontens/weather-forecast';
 import { PubSub } from './js/functions/pubsub';
 import { UI } from './js/functions/ui';
 import { Weather } from './js/functions/weather';
+import { Listener } from './js/functions/listener';
+import './style.css';
 
 const loadApp = () => {
   PubSub.on('load-weather-data', Header.loadContent);
-  PubSub.on('load-weather-data', WeatherForecast.loadContent);
+  PubSub.on('load-weather-forecast', WeatherForecast.loadContent);
+  // PubSub.on('load-weather-data', WeatherForecast.loadContent);
 
   UI.load();
 };
 loadApp();
+document.addEventListener('click', Listener);
 
 // console.log(import.meta.env.VITE_API_KEY);
 // import './style.css'

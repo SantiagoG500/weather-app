@@ -8,11 +8,11 @@ export const Weather = (() => {
     dailyForecast: (city) =>
       `http://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&q=${
         city ? city : 'london'
-      }&days=7`,
+      }&days=3`,
     hourlyForecast: (city) =>
       `http://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&q=${
         city ? city : 'london'
-      }&hours=24`,
+      }&hours=12`,
     search: (city) =>
       `http://api.weatherapi.com/v1/search.json?key=${API_KEY}&q=${
         city ? city : 'london'
@@ -32,17 +32,24 @@ export const Weather = (() => {
 
     return weatherData;
   };
-  const getForecast = async (city, dailyData) => {
-    try {
-      let response;
-      if (dailyData) response = await fetch(API_REQUESTS.dailyForecast(city));
-      else response = await fetch(API_REQUESTS.hourlyForecast(city));
 
+  const getDailyForecast = async (city) => {
+    try {
+      const response = await fetch(API_REQUESTS.dailyForecast(city));
       return response.json();
     } catch (error) {
       console.log(error);
     }
   };
+  const gethourlyForecast = async (city) => {
+    try {
+      const response = await fetch(API_REQUESTS.hourlyForecast(city));
+      return response.json();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const searchCity = async (city) => {
     try {
       const response = await fetch(API_REQUESTS.search(city));
@@ -56,7 +63,8 @@ export const Weather = (() => {
     weatherData,
     utils: {
       searchCity,
-      getForecast,
+      getDailyForecast,
+      gethourlyForecast,
       getcurrentWeather,
     },
   };
