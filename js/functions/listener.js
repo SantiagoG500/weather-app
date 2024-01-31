@@ -1,3 +1,4 @@
+import { NotificationComponent } from '../compontens/loading';
 import { PubSub } from './pubsub';
 import { Weather } from './weather';
 
@@ -16,15 +17,26 @@ const ListenerActions = (() => {
   let weatherConfig = {};
 
   const search = async (e) => {
+    NotificationComponent.load();
+
     const target = e.target;
     const input = document.getElementById('search-bar');
     const inputValue = input.value;
 
     if (!inputValue) return;
 
-    const newWeatherData = await Weather.utils.getcurrentWeather(inputValue);
-    const hourlyForecast = await Weather.utils.gethourlyForecast(inputValue);
-    const dailyForecast = await Weather.utils.getDailyForecast(inputValue);
+    let newWeatherData;
+    let hourlyForecast;
+    let dailyForecast;
+
+    // refactor Weather functions to return an error ot print it out
+    try {
+      newWeatherData = await Weather.utils.getcurrentWeather(inputValue);
+      hourlyForecast = await Weather.utils.gethourlyForecast(inputValue);
+      dailyForecast = await Weather.utils.getDailyForecast(inputValue);
+    } catch (error) {
+      console.log(error);
+    }
 
     PubSub.emit('load-weather-data', newWeatherData, {
       celcius: true,
@@ -39,6 +51,7 @@ const ListenerActions = (() => {
         imperial: false,
       }
     );
+
     // console.log(newWeatherData, newForecastData);
   };
   const toggleUnits = async (e) => {

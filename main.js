@@ -9,7 +9,6 @@ import './style.css';
 const loadApp = () => {
   PubSub.on('load-weather-data', Header.loadContent);
   PubSub.on('load-weather-forecast', WeatherForecast.loadContent);
-  // PubSub.on('load-weather-data', WeatherForecast.loadContent);
 
   UI.load();
 };

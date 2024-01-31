@@ -1,4 +1,5 @@
 import { Header } from '../compontens/header';
+import { NotificationComponent } from '../compontens/loading';
 import { WeatherForecast } from '../compontens/weather-forecast';
 import { PubSub } from './pubsub';
 import { Weather } from './weather';
@@ -9,7 +10,6 @@ export const UI = (() => {
     const currentWeather = await Weather.weatherData;
     const hourlyForecast = await Weather.utils.gethourlyForecast();
     const dailyForecast = await Weather.utils.getDailyForecast();
-
     Header.load();
     WeatherForecast.load();
 
@@ -20,7 +20,7 @@ export const UI = (() => {
       dataConfig
     );
 
-    // console.log(currentWeather);
+    NotificationComponent.load();
   };
 
   return { load };

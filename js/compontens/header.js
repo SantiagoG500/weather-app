@@ -1,4 +1,5 @@
 import { formatCurrentWeather } from '../functions/format-weather-data';
+import { NotificationComponent } from './loading';
 
 export const Header = (() => {
   const appContainer = document.getElementById('app');
@@ -100,6 +101,10 @@ export const Header = (() => {
       degreesButton.innerText = 'Celcius';
       degreesButton.dataset.info = 'fahrenheit';
     }
+
+    setTimeout(() => {
+      NotificationComponent.destroy();
+    }, 500);
   };
 
   return { loadContent, load };
