@@ -2,19 +2,19 @@ export const Weather = (() => {
   const API_KEY = import.meta.env.VITE_API_KEY;
   const API_REQUESTS = {
     currentWeather: (city) =>
-      `http://api.weatherapi.com/v1/current.json?key=${API_KEY}&q=${
+      `https://api.weatherapi.com/v1/current.json?key=${API_KEY}&q=${
         city ? city : 'london'
       }`,
     dailyForecast: (city) =>
-      `http://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&q=${
+      `https://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&q=${
         city ? city : 'london'
       }&days=3`,
     hourlyForecast: (city) =>
-      `http://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&q=${
+      `https://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&q=${
         city ? city : 'london'
       }&hours=12`,
     search: (city) =>
-      `http://api.weatherapi.com/v1/search.json?key=${API_KEY}&q=${
+      `https://api.weatherapi.com/v1/search.json?key=${API_KEY}&q=${
         city ? city : 'london'
       }`,
   };
