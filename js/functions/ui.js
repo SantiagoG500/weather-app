@@ -1,5 +1,5 @@
 import { Header } from '../compontens/header';
-import { NotificationComponent } from '../compontens/loading';
+import { NotificationComponent } from '../compontens/notifications';
 import { WeatherForecast } from '../compontens/weather-forecast';
 import { PubSub } from './pubsub';
 import { Weather } from './weather';
@@ -19,8 +19,6 @@ export const UI = (() => {
       { dailyForecast, hourlyForecast },
       dataConfig
     );
-
-    NotificationComponent.load();
   };
 
   return { load };

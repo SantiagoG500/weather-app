@@ -27,7 +27,7 @@ export const Weather = (() => {
       const response = await fetch(API_REQUESTS.currentWeather(city));
       weatherData = response.json();
     } catch (error) {
-      console.log(error);
+      return error;
     }
 
     return weatherData;
@@ -36,26 +36,32 @@ export const Weather = (() => {
   const getDailyForecast = async (city) => {
     try {
       const response = await fetch(API_REQUESTS.dailyForecast(city));
-      return response.json();
+      const resJSON = response.json();
+
+      return resJSON;
     } catch (error) {
-      console.log(error);
+      return error;
     }
   };
   const gethourlyForecast = async (city) => {
     try {
       const response = await fetch(API_REQUESTS.hourlyForecast(city));
-      return response.json();
+      const resJSON = response.json();
+
+      return resJSON;
     } catch (error) {
-      console.log(error);
+      return error;
     }
   };
 
   const searchCity = async (city) => {
     try {
       const response = await fetch(API_REQUESTS.search(city));
-      return response.json();
+      const resJSON = response.json();
+
+      return resJSON;
     } catch (error) {
-      console.log(error);
+      return error;
     }
   };
 

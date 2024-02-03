@@ -3,6 +3,7 @@
 :root{ 
   --component-bg: hsla(0, 0%, 26%, 0.358);
   --color-txt-light: hsl(180, 11%, 91%);
+  --color-txt-black: hsl(0, 0%, 13%);
 
   --font-family: 'Roboto Condensed', sans-serif;
 
@@ -10,6 +11,12 @@
   --txt-light: 300;
   --txt-medium: 500;
   --txt-bold: 700;
+
+  /* notification section bg */
+  --n-bg-color-def : hsla(17, 100%, 85%, 0.378);
+  --n-bg-color-loading : hsla(59, 100%, 50%, 0.378);
+  --n-bg-color-error : hsla(0, 100%, 50%, 0.378);
+  --n-bg-color-success : hsla(115, 100%, 50%, 0.378);
 }
 
 body{
@@ -33,9 +40,9 @@ body{
   padding-left: 1em;
   padding-right: 1em;
 }
-.main-header, .daily-forecast-div, .hourly-forecast-div {
-  background-color: var(--component-bg);
+.main-header, .daily-forecast-div, .hourly-forecast-div, .notification-tag {
   border-radius: 1rem;
+  background-color: var(--component-bg);
   color: var(--color-txt-light);
 }
 
@@ -91,23 +98,53 @@ body{
   /* background-color: cyan; */
 }
 
-.loading-tag {
+.app {
+  position: relative;
+}
+
+@keyframes fadein {
+  0% { opacity: 0; }
+  50% { opacity: 0.5; }
+  100% { opacity: 1; }
+}
+
+.notification-tag {
+
   position: fixed;
-  top: 0;
-  right: 0;
-
+  top: 90vh;
+  left: 85vw;
+  
   padding: .5em 1em;
-
-  /* position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh; */
-
+  
   display: flex;
   justify-content: center;
   align-items: center;
-
-  background-color: hsla(17, 100%, 50%, 0.378);
+  
+  background-color: var(--n-bg-color-def);
   color: white;
+  animation: fadein 1s linear;
+}
+.notifation-tag--loading {
+  background-color: var(--n-bg-color-loading);
+}
+.notifation-tag--error {
+  background-color: var(--n-bg-color-error);
+}
+.notifation-tag--success {
+  background-color: var(--n-bg-color-success);
+}
+
+
+.input, .btn {
+  background-color: var(--component-bg);
+  color: var(--txt-light);
+  border: 2px solid var(--color-txt-light);
+  border-radius: .5rem;
+
+  padding: .5em 1em;
+}
+.btn:hover, .input:hover  {
+  background-color: var(--color-txt-light);
+  color: var(--color-txt-black);
+  border-color: var(--color-txt-black);
 }

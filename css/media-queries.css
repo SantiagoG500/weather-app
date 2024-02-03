@@ -1,0 +1,36 @@
+@media screen and (min-width: 800px) {
+  
+.main-header {
+  grid-template-areas: 
+  "city-details city-details"
+  "condition weather-details"
+  "search search"
+  ;
+  grid-template-areas: 
+  "search search"
+  "city-details weather-details"
+  "condition condition"
+  ;
+  grid-template-areas: 
+  "search search"
+  "condition weather-details"
+  "city-details city-details"
+  ;
+
+  margin-bottom: 1rem;
+}
+
+.main-header__search,
+.main-header__city-details,
+.main-header__condition,
+.main-header__weather-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.main-header__search{
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+}

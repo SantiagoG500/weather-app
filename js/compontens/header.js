@@ -1,5 +1,5 @@
 import { formatCurrentWeather } from '../functions/format-weather-data';
-import { NotificationComponent } from './loading';
+// import { NotificationComponent } from './loading';
 
 export const Header = (() => {
   const appContainer = document.getElementById('app');
@@ -11,12 +11,12 @@ export const Header = (() => {
     const template = `
         <section class="main-header__search">
           <div>
-            <input type="search" id="search-bar"/>
-            <button data-action="search">Search</button>
+            <input type="search" id="search-bar" class="input"/>
+            <button data-action="search" class="btn">Search</button>
           </div>
           <div>
-            <button id="toggle-degrees" data-action="toggle-degrees"></button>
-            <button id="toggle-units" data-action="toggle-units"></button>
+            <button id="toggle-degrees" data-action="toggle-degrees" class="btn"></button>
+            <button id="toggle-units" data-action="toggle-units" class="btn"></button>
           </div>
         </section>
 
@@ -102,9 +102,9 @@ export const Header = (() => {
       degreesButton.dataset.info = 'fahrenheit';
     }
 
-    setTimeout(() => {
-      NotificationComponent.destroy();
-    }, 500);
+    // setTimeout(() => {
+    //   NotificationComponent.destroy();
+    // }, 500);
   };
 
   return { loadContent, load };
